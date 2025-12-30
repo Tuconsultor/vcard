@@ -1,365 +1,356 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 36ed15237442ed90566e04cd617d8577b40f7f45..99b34d7871da02bf28ee00c9092363bf6512a3f9 100644
---- a/index.html
-+++ b/index.html
-@@ -1,111 +1,283 @@
- <!DOCTYPE html>
- <html lang="es">
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Ramón Daniel Rivera Ayala</title>
-+  <link rel="preconnect" href="https://fonts.googleapis.com">
-+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-   <style>
-+    :root {
-+      color-scheme: light;
-+      --primary: #0f2a4f;
-+      --primary-soft: #15345f;
-+      --accent: #1b6db6;
-+      --accent-soft: #e6f0fb;
-+      --text: #1c2331;
-+      --muted: #5b667a;
-+      --border: #dbe3ef;
-+      --surface: #ffffff;
-+      --background: #f5f7fb;
-+    }
-+
-+    * {
-+      box-sizing: border-box;
-+    }
-+
-     body {
--      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
--      background-color: #f9f9f9;
--      color: #333;
--      max-width: 600px;
--      margin: 20px auto;
--      padding: 20px;
-+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-+      background-color: var(--background);
-+      color: var(--text);
-+      max-width: 900px;
-+      margin: 24px auto;
-+      padding: 24px;
-       line-height: 1.6;
-     }
-+
-     h1 {
--      color: #2c3e50;
--      border-bottom: 2px solid #3498db;
--      padding-bottom: 5px;
-+      font-size: 2rem;
-+      color: var(--primary);
-+      margin: 0 0 4px;
-     }
-+
-     h2 {
--      color: #27ae60;
--      margin-top: 25px;
-+      font-size: 1.1rem;
-+      color: var(--primary);
-+      margin: 0 0 12px;
-+    }
-+
-+    p {
-+      margin: 0;
-     }
-+
-     a {
--      color: #2980b9;
-+      color: var(--accent);
-       text-decoration: none;
-     }
-+
-     a:hover {
-       text-decoration: underline;
-     }
-+
-+    .page {
-+      display: flex;
-+      flex-direction: column;
-+      gap: 20px;
-+    }
-+
-+    .hero {
-+      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
-+      color: #fff;
-+      padding: 28px;
-+      border-radius: 16px;
-+      display: grid;
-+      grid-template-columns: minmax(0, 1fr) 120px;
-+      gap: 20px;
-+      align-items: center;
-+      box-shadow: 0 20px 45px rgba(15, 42, 79, 0.18);
-+    }
-+
-+    .hero-title {
-+      display: flex;
-+      flex-direction: column;
-+      gap: 6px;
-+    }
-+
-+    .hero-subtitle {
-+      font-weight: 500;
-+      color: rgba(255, 255, 255, 0.82);
-+    }
-+
-+    .hero-meta {
-+      font-size: 0.95rem;
-+      color: rgba(255, 255, 255, 0.72);
-+    }
-+
-+    .photo {
-+      width: 120px;
-+      height: 120px;
-+      border-radius: 50%;
-+      border: 4px solid rgba(255, 255, 255, 0.7);
-+      object-fit: cover;
-+      background-color: rgba(255, 255, 255, 0.2);
-+    }
-+
-+    .section {
-+      background: var(--surface);
-+      border: 1px solid var(--border);
-+      padding: 18px 20px;
-+      border-radius: 12px;
-+      box-shadow: 0 12px 30px rgba(28, 35, 49, 0.06);
-+    }
-+
-+    .section-header {
-+      display: flex;
-+      align-items: center;
-+      gap: 8px;
-+      margin-bottom: 12px;
-+      font-weight: 600;
-+      color: var(--primary);
-+    }
-+
-+    .contact-grid {
-+      display: grid;
-+      gap: 12px;
-+    }
-+
-     .contact-item {
--      margin: 10px 0;
-+      display: flex;
-+      flex-wrap: wrap;
-+      gap: 8px;
-+      align-items: center;
-+      color: var(--text);
-+    }
-+
-+    .label {
-+      font-weight: 600;
-+      color: var(--muted);
-+      min-width: 110px;
-+    }
-+
-+    .tag {
-+      background: var(--accent-soft);
-+      color: var(--accent);
-+      font-weight: 600;
-+      padding: 2px 8px;
-+      border-radius: 999px;
-+      font-size: 0.85rem;
-+    }
-+
-+    .button-group {
-+      display: flex;
-+      flex-wrap: wrap;
-+      gap: 10px;
-     }
-+
-     .btn {
--      display: inline-block;
--      padding: 8px 16px;
--      margin: 5px;
--      background-color: #3498db;
--      color: white;
-+      display: inline-flex;
-+      align-items: center;
-+      gap: 8px;
-+      padding: 10px 16px;
-+      background-color: var(--accent);
-+      color: #fff;
-       text-decoration: none;
--      border-radius: 4px;
--      font-weight: bold;
-+      border-radius: 999px;
-+      font-weight: 600;
-+      border: 1px solid transparent;
-+      transition: all 0.2s ease;
-+    }
-+
-+    .btn.secondary {
-+      background: #fff;
-+      color: var(--accent);
-+      border-color: var(--accent);
-     }
-+
-     .btn:hover {
--      background-color: #2980b9;
-+      background-color: #11538c;
-+      text-decoration: none;
-     }
--    .section {
--      background: white;
--      padding: 15px;
--      margin: 15px 0;
--      border-radius: 8px;
--      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-+
-+    .btn.secondary:hover {
-+      background: var(--accent-soft);
-+    }
-+
-+    .list {
-+      margin: 8px 0 0 0;
-+      padding-left: 18px;
-+      color: var(--muted);
-+    }
-+
-+    .note {
-+      margin-top: 10px;
-+      font-size: 0.9rem;
-+      color: var(--muted);
-+    }
-+
-+    @media (max-width: 720px) {
-+      body {
-+        padding: 16px;
-+      }
-+
-+      .hero {
-+        grid-template-columns: 1fr;
-+        text-align: center;
-+      }
-+
-+      .hero-title {
-+        align-items: center;
-+      }
-+
-+      .photo {
-+        margin: 0 auto;
-+      }
-+
-+      .label {
-+        min-width: auto;
-+      }
-     }
-   </style>
- </head>
- <body>
--  <div class="section">
--    <h1>Ramón Daniel Rivera Ayala</h1>
--    <p><strong>Vendedor Profesional</strong></p>
--  </div>
-+  <div class="page">
-+    <section class="hero">
-+      <div class="hero-title">
-+        <h1>Ramón Daniel Rivera Ayala</h1>
-+        <p class="hero-subtitle">Vendedor Profesional</p>
-+        <p class="hero-meta">Asesoría comercial B2B · Soluciones para logística y flotillas</p>
-+      </div>
-+      <img class="photo" src="foto-profesional.jpg" alt="Fotografía profesional de Ramón Daniel Rivera Ayala">
-+    </section>
- 
--  <div class="section">
--    <h2>📞 Contacto</h2>
--    <div class="contact-item">
--      <strong>Teléfono:</strong> <a href="tel:+52477580598">+52 477 580 598</a>
--    </div>
--    <div class="contact-item">
--      <strong>Threema:</strong> <a href="threema://add?id=2WD68EAY">2WD68EAY</a>
--    </div>
--    <div class="contact-item">
--      <strong>WeChat:</strong> <a href="weixin://dl/chat?username=asesorcamionero">asesorcamionero</a>
--    </div>
--    <div class="contact-item">
--      <strong>Emails:</strong>
--      <ul style="margin: 5px 0 0 20px; padding: 0;">
--        <li><a href="mailto:daniel.rivera@elambajio.com">daniel.rivera@elambajio.com</a></li>
--        <li><a href="mailto:ramondanielrivera@gmail.com">ramondanielrivera@gmail.com</a></li>
--      </ul>
--    </div>
--  </div>
-+    <section class="section">
-+      <div class="section-header">Contacto directo <span class="tag">Disponible</span></div>
-+      <div class="contact-grid">
-+        <div class="contact-item">
-+          <span class="label">Teléfono</span>
-+          <a href="tel:+524775805988">+52 477 580 5988</a>
-+        </div>
-+        <div class="contact-item">
-+          <span class="label">Threema</span>
-+          <a href="threema://add?id=2WD68EAY">2WD68EAY</a>
-+        </div>
-+        <div class="contact-item">
-+          <span class="label">WeChat</span>
-+          <a href="weixin://dl/chat?username=asesorcamionero">asesorcamionero</a>
-+        </div>
-+        <div class="contact-item">
-+          <span class="label">Emails</span>
-+          <ul class="list">
-+            <li><a href="mailto:daniel.rivera@elambajio.com">daniel.rivera@elambajio.com</a></li>
-+            <li><a href="mailto:ramondanielrivera@gmail.com">ramondanielrivera@gmail.com</a></li>
-+          </ul>
-+        </div>
-+      </div>
-+      <p class="note">Sustituye <strong>foto-profesional.jpg</strong> por tu fotografía corporativa en la misma carpeta.</p>
-+    </section>
- 
--  <div class="section">
--    <h2>🌐 Redes Sociales</h2>
--    <div class="contact-item">
--      <a href="https://www.linkedin.com/in/ramondanielriveraayala/" target="_blank" class="btn">LinkedIn</a>
--    </div>
--    <div class="contact-item">
--      <a href="https://github.com/Tuconsultor" target="_blank" class="btn">GitHub</a>
--    </div>
--  </div>
-+    <section class="section">
-+      <div class="section-header">Redes profesionales</div>
-+      <div class="button-group">
-+        <a href="https://www.linkedin.com/in/ramondanielriveraayala/" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
-+        <a href="https://github.com/Tuconsultor" target="_blank" rel="noreferrer" class="btn secondary">GitHub</a>
-+      </div>
-+    </section>
- 
--  <div class="section">
--    <h2>🎵 Música Favorita</h2>
--    <div class="contact-item">
--      <a href="https://open.spotify.com/track/5t8yddZze4jLTAoTzDRFtC?si=piAMinzfSKmkWuXJzekLdw" target="_blank" class="btn">Escuchar en Spotify</a>
--    </div>
--  </div>
-+    <section class="section">
-+      <div class="section-header">Música favorita</div>
-+      <div class="button-group">
-+        <a href="https://open.spotify.com/track/5t8yddZze4jLTAoTzDRFtC?si=piAMinzfSKmkWuXJzekLdw" target="_blank" rel="noreferrer" class="btn secondary">Escuchar en Spotify</a>
-+      </div>
-+    </section>
- 
--  <div class="section">
--    <h2>📄 Documentos</h2>
--    <div class="contact-item">
--      <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/resume.pdf?alt=media&token=..." target="_blank" class="btn">Descargar CV</a>
--    </div>
--    <div class="contact-item">
--      <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/portfolio.pdf?alt=media&token=..." target="_blank" class="btn">Ver Portafolio</a>
--    </div>
-+    <section class="section">
-+      <div class="section-header">Documentos</div>
-+      <div class="button-group">
-+        <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/resume.pdf?alt=media&token=..." target="_blank" rel="noreferrer" class="btn">Descargar CV</a>
-+        <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/portfolio.pdf?alt=media&token=..." target="_blank" rel="noreferrer" class="btn secondary">Ver portafolio</a>
-+      </div>
-+    </section>
-   </div>
- </body>
- </html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lic. Ramón Daniel Rivera Ayala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --primary: #0f2a4f;
+      --primary-soft: #15345f;
+      --accent: #1b6db6;
+      --accent-soft: #e6f0fb;
+      --text: #1c2331;
+      --muted: #5b667a;
+      --border: #dbe3ef;
+      --surface: #ffffff;
+      --background: #f5f7fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      font-size: 2rem;
+      color: var(--primary);
+      margin: 0 0 4px;
+    }
+
+    h2 {
+      color: #27ae60;
+      margin-top: 25px;
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 0 0 12px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: #2980b9;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+      color: #fff;
+      padding: 28px;
+      border-radius: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 120px;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(15, 42, 79, 0.18);
+    }
+
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-subtitle {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-meta {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.7);
+      object-fit: cover;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 18px 20px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(28, 35, 49, 0.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .label {
+      font-weight: 600;
+      color: var(--muted);
+      min-width: 110px;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 5px;
+      background-color: #3498db;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background-color: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+      background-color: #11538c;
+      text-decoration: none;
+    }
+    .section {
+      background: white;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    .btn.secondary:hover {
+      background: var(--accent-soft);
+    }
+
+    .list {
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 16px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-title {
+        align-items: center;
+      }
+
+      .photo {
+        margin: 0 auto;
+      }
+
+      .label {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Ramón Daniel Rivera Ayala</h1>
+    <p><strong>Vendedor Profesional</strong></p>
+  </div>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-title">
+        <h1>Lic. Ramón Daniel Rivera Ayala</h1>
+        <p class="hero-subtitle">Vendedor Profesional</p>
+        <p class="hero-meta">Asesoría comercial B2B · Soluciones para logística y flotillas</p>
+      </div>
+      <img class="photo" src="foto-profesional.jpg" alt="Fotografía profesional de Ramón Daniel Rivera Ayala">
+    </section>
+
+  <div class="section">
+    <h2>📞 Contacto</h2>
+    <div class="contact-item">
+      <strong>Teléfono:</strong> <a href="tel:+524775805988">+52 477 580 5988</a>
+    </div>
+    <div class="contact-item">
+      <strong>Threema:</strong> <a href="threema://add?id=2WD68EAY">2WD68EAY</a>
+    </div>
+    <div class="contact-item">
+      <strong>WeChat:</strong> <a href="weixin://dl/chat?username=asesorcamionero">asesorcamionero</a>
+    </div>
+    <div class="contact-item">
+      <strong>Emails:</strong>
+      <ul style="margin: 5px 0 0 20px; padding: 0;">
+        <li><a href="mailto:daniel.rivera@elambajio.com">daniel.rivera@elambajio.com</a></li>
+        <li><a href="mailto:ramondanielrivera@gmail.com">ramondanielrivera@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+    <section class="section">
+      <div class="section-header">Contacto directo <span class="tag">Disponible</span></div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="label">Teléfono</span>
+          <a href="tel:+524775805988">+52 477 580 5988</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Threema</span>
+          <a href="threema://add?id=2WD68EAY">2WD68EAY</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">WeChat</span>
+          <a href="weixin://dl/chat?username=asesorcamionero">asesorcamionero</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Emails</span>
+          <ul class="list">
+            <li><a href="mailto:daniel.rivera@elambajio.com">daniel.rivera@elambajio.com</a></li>
+            <li><a href="mailto:ramondanielrivera@gmail.com">ramondanielrivera@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Sustituye <strong>foto-profesional.jpg</strong> por tu fotografía corporativa en la misma carpeta.</p>
+    </section>
+
+  <div class="section">
+    <h2>🌐 Redes Sociales</h2>
+    <div class="contact-item">
+      <a href="https://www.linkedin.com/in/ramondanielriveraayala/" target="_blank" class="btn">LinkedIn</a>
+    </div>
+    <div class="contact-item">
+      <a href="https://github.com/Tuconsultor" target="_blank" class="btn">GitHub</a>
+    </div>
+  </div>
+    <section class="section">
+      <div class="section-header">Redes profesionales</div>
+      <div class="button-group">
+        <a href="https://www.linkedin.com/in/ramondanielriveraayala/" target="_blank" rel="noreferrer" class="btn">LinkedIn</a>
+        <a href="https://github.com/Tuconsultor" target="_blank" rel="noreferrer" class="btn secondary">GitHub</a>
+      </div>
+    </section>
+
+  <div class="section">
+    <h2>🎵 Música Favorita</h2>
+    <div class="contact-item">
+      <a href="https://open.spotify.com/track/5t8yddZze4jLTAoTzDRFtC?si=piAMinzfSKmkWuXJzekLdw" target="_blank" class="btn">Escuchar en Spotify</a>
+    </div>
+  </div>
+    <section class="section">
+      <div class="section-header">Música favorita</div>
+      <div class="button-group">
+        <a href="https://open.spotify.com/track/5t8yddZze4jLTAoTzDRFtC?si=piAMinzfSKmkWuXJzekLdw" target="_blank" rel="noreferrer" class="btn secondary">Escuchar en Spotify</a>
+      </div>
+    </section>
+
+  <div class="section">
+    <h2>📄 Documentos</h2>
+    <div class="contact-item">
+      <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/resume.pdf?alt=media&token=..." target="_blank" class="btn">Descargar CV</a>
+    </div>
+    <div class="contact-item">
+      <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/portfolio.pdf?alt=media&token=..." target="_blank" class="btn">Ver Portafolio</a>
+    </div>
+    <section class="section">
+      <div class="section-header">Documentos</div>
+      <div class="button-group">
+        <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/resume.pdf?alt=media&token=..." target="_blank" rel="noreferrer" class="btn">Descargar CV</a>
+        <a href="https://firebasestorage.googleapis.com/v0/b/mi-nfc-hub.appspot.com/o/portfolio.pdf?alt=media&token=..." target="_blank" rel="noreferrer" class="btn secondary">Ver portafolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
