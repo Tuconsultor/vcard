@@ -15,17 +15,19 @@
 - [x] Implementar autenticación Manus OAuth
 - [x] Sincronizar schema con `pnpm db:push`
 
-## Phase 3: File Storage Integration
-- [x] Agregar helpers de base de datos (createFile, getUserFiles, deleteFile)
-- [x] Crear procedimientos tRPC para archivos (list, upload, delete)
-- [x] Crear página Files.tsx para gestión de archivos
-- [x] Crear API endpoint para uploads a S3
-- [ ] Implementar integración real con S3 (presigned URLs)
-- [ ] Agregar validación de tipos de archivo
-- [ ] Agregar límite de tamaño de archivo
-- [ ] Implementar barra de progreso de upload
+## Phase 3: Services Section
+- [x] Crear componente ServiceCard para mostrar servicios
+- [x] Agregar sección de servicios en Home.tsx
+- [x] Diseñar tarjetas de servicios con iconos
+- [x] Agregar descripción de servicios B2B
 
-## Phase 4: UI/UX Enhancements
+## Phase 4: GitHub Integration
+- [x] Crear guía completa de GitHub (GITHUB_SETUP.md)
+- [x] Documentar proceso de inicialización Git
+- [x] Documentar proceso de conexión con repositorio remoto
+- [x] Incluir comandos útiles y solución de problemas
+
+## Phase 5: UI/UX Enhancements
 - [ ] Agregar página de login personalizada
 - [ ] Crear página de perfil de usuario
 - [ ] Agregar formulario de contacto con almacenamiento

@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import SectionHeader from '@/components/SectionHeader';
 import ContactCard from '@/components/ContactCard';
 import ActionButton from '@/components/ActionButton';
+import ServiceCard from '@/components/ServiceCard';
 import {
   Phone,
   MessageCircle,
@@ -14,7 +15,10 @@ import {
   FileText,
   Download,
   Users,
-  Upload,
+  Truck,
+  BarChart3,
+  Zap,
+  Shield,
 } from 'lucide-react';
 
 /**
@@ -101,6 +105,53 @@ export default function Home() {
     },
   ];
 
+  const services = [
+    {
+      icon: Truck,
+      title: 'Asesoría en Logística',
+      description: 'Optimización de operaciones de transporte y flotillas',
+      features: [
+        'Análisis de rutas y costos',
+        'Gestión de flotillas',
+        'Negociación con proveedores',
+        'Implementación de tecnología',
+      ],
+    },
+    {
+      icon: BarChart3,
+      title: 'Análisis Comercial',
+      description: 'Estrategias de negocio para empresas de transporte',
+      features: [
+        'Estudios de mercado',
+        'Proyecciones financieras',
+        'Benchmarking competitivo',
+        'Planes de crecimiento',
+      ],
+    },
+    {
+      icon: Zap,
+      title: 'Optimización Operativa',
+      description: 'Mejora de eficiencia y reducción de costos',
+      features: [
+        'Auditoría operacional',
+        'Procesos lean',
+        'Capacitación de equipos',
+        'Métricas de desempeño',
+      ],
+    },
+    {
+      icon: Shield,
+      title: 'Cumplimiento Normativo',
+      description: 'Asesoría en regulaciones y normativas del sector',
+      features: [
+        'Normativas de transporte',
+        'Seguridad vial',
+        'Documentación legal',
+        'Auditorías de cumplimiento',
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container max-w-6xl mx-auto py-8 md:py-12">
@@ -114,6 +165,26 @@ export default function Home() {
           whatsappNumber={contactData.whatsapp}
           email={contactData.email}
         />
+
+        {/* Services Section */}
+        <section className="mb-12 md:mb-16 fade-in-stagger">
+          <SectionHeader
+            title="Servicios Profesionales"
+            description="Soluciones integrales para optimizar tu operación comercial"
+          />
+          <div className="grid md:grid-cols-2 gap-6">
+            {services.map((service, idx) => (
+              <div key={idx} className="fade-in">
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Direct Contact Section */}
         <section className="mb-12 md:mb-16 fade-in-stagger">
@@ -236,48 +307,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* File Storage Section (Full-Stack Feature) */}
-        <section className="mb-12 md:mb-16 fade-in-stagger">
-          <SectionHeader
-            title="Almacenamiento de Archivos"
-            description="Gestión profesional de documentos en la nube"
-          />
-          <div className="card-industrial p-8">
-            <div className="flex flex-col items-center justify-center text-center">
-              <Upload className="w-12 h-12 text-secondary mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                Carga de Documentos
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Almacena y gestiona tus archivos de forma segura en la nube con S3
-              </p>
-              {isAuthenticated ? (
-                <div className="flex gap-3">
-                  <ActionButton
-                    href="/files"
-                    label="Ir a Almacenamiento"
-                    icon={Upload}
-                    variant="primary"
-                  />
-                  <button
-                    onClick={logout}
-                    className="btn-secondary"
-                  >
-                    Cerrar Sesión
-                  </button>
-                </div>
-              ) : (
-                <ActionButton
-                  href="/login"
-                  label="Iniciar Sesión"
-                  icon={Users}
-                  variant="primary"
-                />
-              )}
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <footer className="mt-16 md:mt-20 pt-8 border-t border-border">
           <div className="text-center text-sm text-muted-foreground">
@@ -285,7 +314,7 @@ export default function Home() {
               © 2025 Lic. Ramón Daniel Rivera Ayala. Todos los derechos reservados.
             </p>
             <p className="text-xs">
-              Diseño industrial minimalista • Full-stack con almacenamiento S3
+              Diseño industrial minimalista • Desarrollado con precisión técnica
             </p>
           </div>
         </footer>
