@@ -1,15 +1,32 @@
 <!doctype html>
 <html lang="es">
+
   <head>
     <meta charset="UTF-8" />
     <meta
-      http-equiv="refresh"
-      content="0; url=./client/index.html"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirigiendo…</title>
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="description" content="Asesoría comercial B2B para logística y flotillas. Contacta a Lic. Ramón Daniel Rivera Ayala para optimizar tu operación.">
+    <meta property="og:title" content="Lic. Ramón Daniel Rivera Ayala - Asesor B2B">
+    <meta property="og:description" content="Asesoría comercial B2B · Soluciones para logística y flotillas.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Lic. Ramón Daniel Rivera Ayala - Asesor B2B</title>
+    
+    <!-- Google Fonts: IBM Plex Mono (Technical Display) + Roboto (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
+
   <body>
-    <p>Redirigiendo a <a href="./client/index.html">/client/index.html</a>…</p>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script
+      defer
+      src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
+
 </html>
