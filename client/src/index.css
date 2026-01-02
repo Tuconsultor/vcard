@@ -43,83 +43,125 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  /* Industrial Minimalist Design System */
+  /* Primary: Steel Blue (Confianza técnica) */
+  --primary: #1a3a52;
+  --primary-foreground: #f0f0f0;
+  
+  /* Secondary: Oxidized Orange (Energía, señalización) */
+  --secondary: #d97706;
+  --secondary-foreground: #ffffff;
+  
+  /* Accent: Warm Gray (Equilibrio visual) */
+  --accent: #78716c;
+  --accent-foreground: #ffffff;
+  
+  /* Sidebar colors (inherited from primary) */
+  --sidebar-primary: #1a3a52;
+  --sidebar-primary-foreground: #f0f0f0;
+  
+  /* Chart colors (industrial palette) */
+  --chart-1: #1a3a52;
+  --chart-2: #d97706;
+  --chart-3: #78716c;
+  --chart-4: #2d5a7b;
+  --chart-5: #f4a261;
+  
+  /* Radius: Minimal rounding (0.25rem for technical feel) */
+  --radius: 0.25rem;
+  
+  /* Backgrounds: Clean, minimal */
+  --background: oklch(0.98 0 0);
+  --foreground: #1a1a1a;
+  
+  /* Card: Subtle gray background */
+  --card: oklch(0.96 0.001 0);
+  --card-foreground: #1a1a1a;
+  
+  /* Popover: Same as card */
+  --popover: oklch(0.96 0.001 0);
+  --popover-foreground: #1a1a1a;
+  
+  /* Muted: Light gray for secondary text */
+  --muted: #9ca3af;
+  --muted-foreground: #6b7280;
+  
+  /* Border: Subtle, technical */
+  --border: #e5e7eb;
+  --input: #f3f4f6;
+  --ring: #1a3a52;
+  
+  /* Destructive: Red for warnings */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  
+  /* Sidebar (light theme) */
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-accent: #d97706;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #1a3a52;
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --primary: #2d5a7b;
+  --primary-foreground: #f0f0f0;
+  --secondary: #f4a261;
+  --secondary-foreground: #1a1a1a;
+  --background: oklch(0.15 0 0);
+  --foreground: #f0f0f0;
+  --card: oklch(0.22 0.001 0);
+  --card-foreground: #f0f0f0;
+  --popover: oklch(0.22 0.001 0);
+  --popover-foreground: #f0f0f0;
+  --muted: #9ca3af;
+  --muted-foreground: #d1d5db;
+  --border: #374151;
+  --input: #1f2937;
+  --ring: #f4a261;
+  --sidebar: oklch(0.22 0.001 0);
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-accent: #f4a261;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #374151;
+  --sidebar-ring: #f4a261;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    /* Industrial Minimalist typography */
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 0.3px;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    /* Technical display font */
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl font-bold;
+    letter-spacing: 1px;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold;
+    letter-spacing: 0.75px;
+  }
+  
+  h3 {
+    @apply text-lg md:text-xl font-semibold;
+    letter-spacing: 0.5px;
+  }
+  
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -131,27 +173,29 @@
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
+  
+  a {
+    @apply text-primary hover:text-secondary transition-colors duration-100;
+  }
 }
 
 @layer components {
   /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
+   * Industrial Minimalist Design System
+   * 
+   * Design Philosophy:
+   * - Precision and clarity (like technical drawings)
+   * - Hard edges, straight lines, minimal curves
+   * - Asymmetric layouts with strategic whitespace
+   * - Steel blue primary + oxidized orange accents
+   * - Fast, precise interactions (no excessive smoothing)
    */
+  
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
@@ -162,16 +206,180 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
+    }
+  }
+  
+  /* Industrial card with left border accent */
+  .card-industrial {
+    @apply bg-card border border-border rounded-sm;
+    border-left: 4px solid var(--secondary);
+    box-shadow: 0 2px 8px rgba(26, 58, 82, 0.08);
+    transition: all 100ms linear;
+  }
+  
+  .card-industrial:hover {
+    box-shadow: 0 4px 12px rgba(26, 58, 82, 0.12);
+    border-left-color: var(--primary);
+  }
+  
+  /* Technical section divider */
+  .section-divider {
+    @apply my-8 md:my-12;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+  }
+  
+  /* Monospace label (technical style) */
+  .label-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    @apply text-sm font-semibold text-accent uppercase tracking-wider;
+    letter-spacing: 1px;
+  }
+  
+  /* CTA Button - Primary (Orange) */
+  .btn-primary {
+    @apply px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-sm;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 100ms linear;
+    border: 2px solid transparent;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgba(217, 119, 6, 0.9);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  /* Secondary Button */
+  .btn-secondary {
+    @apply px-6 py-3 bg-card text-foreground font-semibold rounded-sm border-2 border-border;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 100ms linear;
+  }
+  
+  .btn-secondary:hover {
+    @apply border-primary;
+    background-color: rgba(26, 58, 82, 0.05);
+  }
+  
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+  
+  /* WhatsApp Button */
+  .btn-whatsapp {
+    @apply px-6 py-3 bg-green-600 text-white font-semibold rounded-sm;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 100ms linear;
+  }
+  
+  .btn-whatsapp:hover {
+    @apply bg-green-700;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+  }
+  
+  .btn-whatsapp:active {
+    transform: scale(0.98);
+  }
+  
+  /* Status badge */
+  .badge-status {
+    @apply inline-block px-3 py-1 bg-green-100 text-green-800 rounded-sm;
+    font-family: 'IBM Plex Mono', monospace;
+    @apply text-xs font-semibold uppercase tracking-wider;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Contact grid layout */
+  .contact-grid {
+    @apply grid gap-6 md:gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  /* Hero section with asymmetric layout */
+  .hero-section {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, var(--primary) 0%, #2d5a7b 100%);
+    padding: 3rem 2rem;
+    border-radius: 0;
+    border-left: 6px solid var(--secondary);
+  }
+  
+  .hero-section h1 {
+    @apply text-white mb-2;
+  }
+  
+  .hero-section p {
+    @apply text-gray-200 mb-1;
+  }
+  
+  /* Animated line decoration */
+  .line-accent {
+    @apply absolute top-0 left-0 h-1 bg-secondary;
+    animation: expandWidth 0.8s ease-out forwards;
+  }
+  
+  @keyframes expandWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Fade in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stagger animation for list items */
+  .fade-in-stagger > * {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .fade-in-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Responsive typography adjustments */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-3xl;
+    }
+    
+    h2 {
+      @apply text-xl;
+    }
+    
+    h3 {
+      @apply text-base;
     }
   }
 }
