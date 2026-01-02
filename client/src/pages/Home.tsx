@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '@/_core/hooks/useAuth';
 import HeroSection from '@/components/HeroSection';
 import SectionHeader from '@/components/SectionHeader';
 import ContactCard from '@/components/ContactCard';
@@ -13,6 +14,7 @@ import {
   FileText,
   Download,
   Users,
+  Upload,
 } from 'lucide-react';
 
 /**
@@ -38,6 +40,9 @@ import {
  */
 
 export default function Home() {
+  // Authentication state
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const contactData = {
     name: 'Lic. Ramón Daniel Rivera Ayala',
     title: 'Vendedor Profesional',
@@ -199,7 +204,7 @@ export default function Home() {
         </section>
 
         {/* Documents & Resources */}
-        <section className="fade-in-stagger">
+        <section className="mb-12 md:mb-16 fade-in-stagger">
           <SectionHeader
             title="Documentos y Recursos"
             description="Descarga mi CV, portafolio y datos de contacto"
@@ -231,6 +236,48 @@ export default function Home() {
           </div>
         </section>
 
+        {/* File Storage Section (Full-Stack Feature) */}
+        <section className="mb-12 md:mb-16 fade-in-stagger">
+          <SectionHeader
+            title="Almacenamiento de Archivos"
+            description="Gestión profesional de documentos en la nube"
+          />
+          <div className="card-industrial p-8">
+            <div className="flex flex-col items-center justify-center text-center">
+              <Upload className="w-12 h-12 text-secondary mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Carga de Documentos
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Almacena y gestiona tus archivos de forma segura en la nube con S3
+              </p>
+              {isAuthenticated ? (
+                <div className="flex gap-3">
+                  <ActionButton
+                    href="/files"
+                    label="Ir a Almacenamiento"
+                    icon={Upload}
+                    variant="primary"
+                  />
+                  <button
+                    onClick={logout}
+                    className="btn-secondary"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </div>
+              ) : (
+                <ActionButton
+                  href="/login"
+                  label="Iniciar Sesión"
+                  icon={Users}
+                  variant="primary"
+                />
+              )}
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="mt-16 md:mt-20 pt-8 border-t border-border">
           <div className="text-center text-sm text-muted-foreground">
@@ -238,7 +285,7 @@ export default function Home() {
               © 2025 Lic. Ramón Daniel Rivera Ayala. Todos los derechos reservados.
             </p>
             <p className="text-xs">
-              Diseño industrial minimalista • Desarrollado con precisión técnica
+              Diseño industrial minimalista • Full-stack con almacenamiento S3
             </p>
           </div>
         </footer>
